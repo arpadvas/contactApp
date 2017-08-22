@@ -1,0 +1,21 @@
+li {
+    border-style: none;
+}
+
+.list-group-item {
+    padding: 10px 10px 10px 0;
+}
+
+.avatar {
+  display: inline-block;
+  margin-right: 10px;
+  /*padding: 10px 0;*/
+}
+
+.avatar__img {
+  width: 20px;
+  height: 20px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}

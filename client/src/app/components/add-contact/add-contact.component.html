@@ -1,0 +1,14 @@
+<form class="form-inline" [formGroup]="form" (submit)="onAddContactSubmit()">
+  <div class="form-group">
+    <div [ngClass]="{'has-error': form.controls.fname.errors && form.controls.fname.dirty, 'has-success': form.controls.fname.valid && form.controls.fname.dirty }">
+      <input type="text" name="fname" id="fname" formControlName="fname" class="form-control" placeholder="First name...">     
+    </div>
+  </div>
+  <div class="form-group">
+    <div [ngClass]="{'has-error': form.controls.lname.errors && form.controls.lname.dirty, 'has-success': form.controls.lname.valid && form.controls.lname.dirty }">
+      <input type="text" name="lname" id="lname" formControlName="lname" class="form-control" placeholder="Last name...">
+    </div>
+  </div>
+  <button [disabled]="!form.valid" type="submit" class="btn btn-default">Add contact</button>
+  <p class="help-block" *ngIf="(form.controls.fname.errors?.required && form.controls.fname.dirty) || (form.controls.lname.errors?.required && form.controls.lname.dirty)">Both fields are required.</p>
+</form>

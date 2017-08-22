@@ -1,0 +1,15 @@
+<div class="page-wrapper">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">List of contacts</h3>
+    </div>
+    <div class="panel-body">
+      <p>You have {{contacts.length}} contacts.</p>
+      <app-add-contact></app-add-contact>
+      <hr>
+      <ul class="list-group">
+        <app-contact-list-element *ngFor="let contact of contacts" [contactElement]="contact"></app-contact-list-element>
+      </ul>
+    </div>
+  </div>
+</div>

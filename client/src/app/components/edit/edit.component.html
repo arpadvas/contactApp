@@ -1,3 +1,13 @@
-<div class="page-wrapper">
+<!--<div class="page-wrapper">
   <app-address *ngFor="let address of addresses" [addressElement]="address"></app-address>
+</div>-->
+
+<div class="page-wrapper">
+  <tabset>
+    <tab *ngFor="let address of addresses"
+         heading="Address {{address.id}}">
+
+    </tab>
+    <tab heading="New Address..."></tab>
+  </tabset>
 </div>

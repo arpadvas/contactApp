@@ -12,7 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { PanelModule } from 'primeng/primeng';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PanelComponent } from './components/panel/panel.component';
 import { ContactListElementComponent } from './components/contact-list-element/contact-list-element.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
@@ -40,7 +40,7 @@ import { AddressComponent } from './components/address/address.component';
     HttpModule,
     AppRoutingModule,
     CollapseModule.forRoot(),
-    PanelModule
+    TabsModule.forRoot()
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

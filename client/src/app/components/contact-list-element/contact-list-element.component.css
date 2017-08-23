@@ -6,10 +6,17 @@ li {
     padding: 10px 10px 10px 0;
 }
 
+li span {
+  float: right;
+}
+
+li span i {
+  cursor: pointer
+}
+
 .avatar {
   display: inline-block;
   margin-right: 10px;
-  /*padding: 10px 0;*/
 }
 
 .avatar__img {

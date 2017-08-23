@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  // get all contacts
   getContacts() {
     this.dataService.getContacts().subscribe(data => {
       console.log(data);

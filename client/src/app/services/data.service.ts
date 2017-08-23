@@ -22,4 +22,9 @@ export class DataService {
     return this.http.post(`${this.domain}/contacts`, contact).map(res => res.json());
   }
 
+  // remove contact
+  removeContact(id) {
+    return this.http.delete(`${this.domain}/contacts/${id}`).map(res => res.json());
+  }
+
 }

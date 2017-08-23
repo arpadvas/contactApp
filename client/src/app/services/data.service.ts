@@ -27,4 +27,9 @@ export class DataService {
     return this.http.delete(`${this.domain}/contacts/${id}`).map(res => res.json());
   }
 
+   // get contact addresses
+  getAddresses(id) {
+    return this.http.get(`${this.domain}/contacts/${id}/addresses`).map(res => res.json());
+  }
+
 }

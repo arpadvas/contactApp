@@ -1,5 +1,5 @@
 <li class="list-group-item">
-  <span><i class="fa fa-pencil fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-trash fa-lg" aria-hidden="true" (click)="removeContact(contactElement.id)"></i></span>
+  <span><i [routerLink]="['/edit/', contactElement.id]" class="fa fa-pencil fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-trash fa-lg" aria-hidden="true" (click)="removeContact(contactElement.id)"></i></span>
   <div class="avatar">
     <img class="avatar__img" [src]="contactElement.avatar">
   </div>

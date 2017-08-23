@@ -17,7 +17,8 @@ import { PanelComponent } from './components/panel/panel.component';
 import { ContactListElementComponent } from './components/contact-list-element/contact-list-element.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { DataService } from './services/data.service';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { EditComponent } from './components/edit/edit.component';
+import { AddressComponent } from './components/address/address.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ContactComponent,
     PanelComponent,
     ContactListElementComponent,
-    AddContactComponent
+    AddContactComponent,
+    EditComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpModule,
     AppRoutingModule,
     CollapseModule.forRoot(),
-    PanelModule,
-    ModalModule.forRoot()
+    PanelModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

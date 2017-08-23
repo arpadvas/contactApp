@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import Contact from '../../models/contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import { DataService } from '../../services/data.service';
 })
 export class ContactComponent implements OnInit {
 
-  contacts = [];
+  contacts: Contact[] = [];
 
   constructor(
     private dataService: DataService

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DataService } from '../../services/data.service';
+import Contact from '../../models/contact.model';
 
 @Component({
   selector: 'app-add-contact',
@@ -29,12 +30,7 @@ export class AddContactComponent implements OnInit {
 
   // submit contact data
   onAddContactSubmit() {
-    console.log(this.form);
-    const contact = {
-      first_name: this.form.get('fname').value,
-      last_name: this.form.get('lname').value,
-      avatar: 'https://handmade.network/static/light/empty-avatar.svg'
-    }
+    const contact = new Contact(this.form.get('fname').value, this.form.get('lname').value, 'https://handmade.network/static/light/empty-avatar.svg');
     this.dataService.addContact(contact).subscribe(data => {
       this.contactUpdated = true;
       this.dataService.contactUpdated.emit(this.contactUpdated);

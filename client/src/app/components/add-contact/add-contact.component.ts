@@ -33,7 +33,7 @@ export class AddContactComponent implements OnInit {
     const contact = new Contact(this.form.get('fname').value, this.form.get('lname').value, 'https://handmade.network/static/light/empty-avatar.svg');
     this.dataService.addContact(contact).subscribe(data => {
       this.contactUpdated = true;
-      this.dataService.contactUpdated.emit(this.contactUpdated);
+      this.dataService.contactUpdated.emit(this.contactUpdated); // emit contactUpdated event
       this.form.reset();
     });
   }

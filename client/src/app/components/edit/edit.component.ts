@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import Address from '../../models/address.model';
+import Contact from '../../models/contact.model';
 
 @Component({
   selector: 'app-edit',
@@ -10,23 +12,104 @@ import Address from '../../models/address.model';
 })
 export class EditComponent implements OnInit {
 
-  addresses: Address[] = [];
+  addresses: Address[] = []; // array of addresses of actual contact
+  contact: Contact; // actual contact
+  processing: boolean; // processing
+  editing: boolean = false; // to show/hide edit form
+  disabled:boolean = false; // to disable tabs on editing
+  tempAddress: Address; // temporary address container
+  headingText: string = 'Address'; // static string for tab heading
 
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
-  // get contact addresses
-  getAddresses(id) {
-    this.dataService.getAddresses(id).subscribe(data => {
-      console.log(data);
-      this.addresses = data;
-    });
+  // provide with heading for tabs
+  getHeading(id) {
+    if (id) {
+      const number = this.addresses.findIndex(obj => obj.id == id); // calculate address id to be shown by checking the index of actual address element
+      return `Address ${number+1}`;
+    } else {
+      return 'New Address';
+    }
   }
 
-  ngOnInit() {
-    this.getAddresses(this.route.snapshot.params.id);
+  // switch to edit mode
+  onEditAddress(addressId) {
+    this.editing = true; 
+    this.disabled = true;
+    // create temporary address for editing
+    const tempAddress = this.addresses.filter((obj) => {
+      return obj.id == addressId;
+    });
+    this.tempAddress = JSON.parse(JSON.stringify(tempAddress[0]));
+  }
+
+  // create new tab with emty form to add new address
+  addNewAddress() {
+    const newAddress = new Address('', '', '', '', this.contact.id);
+    this.tempAddress = newAddress;
+    this.addresses.push(newAddress);
+  }
+
+  // save address changes
+  onSaveAddress(addressId) {
+    this.editing = false;
+    this.disabled = false;
+    if (addressId) {
+      this.dataService.editAddress(addressId, this.tempAddress).subscribe(data => {
+        this.dataService.getAddresses(this.route.snapshot.params.id).subscribe(result => {
+          this.addresses = result;
+          this.addNewAddress();
+        });
+      });
+    } else {
+      this.dataService.addAddress(this.contact.id, this.tempAddress).subscribe(data => {
+        this.dataService.getAddresses(this.route.snapshot.params.id).subscribe(result => {
+          this.addresses = result;
+          this.addNewAddress();
+        });
+      });
+    }
+  }
+
+  // to cancel editing and switch back to address showing mode
+  onCancel(id) {
+    if (id) {
+      this.editing = false;
+    this.disabled = false;
+    } else {
+      this.tempAddress = new Address('', '', '', '', this.contact.id);
+    }
+  }
+
+  // create emty form when selecting new address tab
+  selectNewAddress(id) {
+    if (!id) {
+      this.editing = true; 
+      this.tempAddress = new Address('', '', '', '', this.contact.id);
+    }
+  }
+
+  // turn off edit mode when deselect new address
+  deselectNewAddress(id) {
+    if (!id) {
+      this.editing = false; 
+    }
+  }
+
+  ngOnInit() {;
+    this.processing = true;
+    this.dataService.getUserDetails(this.route.snapshot.params.id).subscribe(data => {
+      this.contact = data[0];
+      this.addresses = data[1];
+      if (data[1].length < 1) {
+        this.editing = true;
+      }
+      this.processing = false;
+      this.addNewAddress();
+    });
 
   }
 

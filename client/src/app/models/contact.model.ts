@@ -1,3 +1,4 @@
+// define contact model
 export default class Contact {
     public id?: number;
 

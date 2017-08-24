@@ -1,3 +1,4 @@
+// define address model
 export default class Address {
     public id?: number;
 

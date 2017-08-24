@@ -1,13 +1,47 @@
-<!--<div class="page-wrapper">
-  <app-address *ngFor="let address of addresses" [addressElement]="address"></app-address>
-</div>-->
-
-<div class="page-wrapper">
+<div *ngIf="!processing" class="page-wrapper">
+  <div class="address_header">
+    <div class="avatar">
+      <img class="avatar__img" [src]="contact.avatar">
+    </div>
+    <h3>{{contact.first_name}} {{contact.last_name}} addresses</h3>
+  </div>
   <tabset>
-    <tab *ngFor="let address of addresses"
-         heading="Address {{address.id}}">
-
+    <tab *ngFor="let address of addresses" 
+          [heading]="getHeading(address.id)" 
+          [disabled]="disabled" 
+          (select)="selectNewAddress(address.id)" 
+          (deselect)="deselectNewAddress(address.id)">
+         <ul *ngIf="!editing" class="list-group">
+           <li class="list-group-item">
+             <span>Street1: {{address.street1}}</span>
+           </li>
+           <li class="list-group-item">
+             <span>Street2: {{address.street2}}</span>
+           </li>
+           <li class="list-group-item">
+             <span>Town: {{address.town}}</span>
+           </li>
+           <li class="list-group-item">
+             <span>Country: {{address.country}}</span>
+           </li>
+        </ul>
+        <form *ngIf="editing">
+          <div class="form-group">
+            <input type="text" name="street1" id="street1" class="form-control" [(ngModel)]="tempAddress.street1" placeholder="Street1">
+          </div>
+          <div class="form-group">
+            <input type="text" name="street2" id="street2" class="form-control" [(ngModel)]="tempAddress.street2" placeholder="Street2"> 
+          </div> 
+          <div class="form-group">
+            <input type="text" name="town" id="town" class="form-control" [(ngModel)]="tempAddress.town" placeholder="Town">
+          </div>
+          <div class="form-group">
+            <input type="text" name="country" id="country" class="form-control" [(ngModel)]="tempAddress.country" placeholder="Country">
+          </div>      
+          <button (click)="onSaveAddress(address.id)" class="btn btn-danger">Save address</button>
+          <button (click)="onCancel(address.id)" class="btn btn-info">Cancel</button>
+        </form>
+        <button *ngIf="!editing" (click)="onEditAddress(address.id)" class="btn btn-primary">Edit address</button>
     </tab>
-    <tab heading="New Address..."></tab>
   </tabset>
 </div>

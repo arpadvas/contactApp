@@ -1,0 +1,38 @@
+li {
+    border-style: none;
+}
+
+h3 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+
+form {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+.form-control {
+    max-width: 400px;
+}
+
+.address_header {
+    margin-bottom: 20px;
+}
+
+.avatar {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.avatar__img {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}

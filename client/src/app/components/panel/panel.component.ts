@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
 
+  // bind contact element to contact component
   @Input() contentElement: {name: string, role: string, description: string};
 
   constructor() { }

@@ -16,11 +16,11 @@ export class ContactListElementComponent implements OnInit {
     private dataService: DataService
   ) { }
 
-  // remove contacts
+  // remove contact
   removeContact(id) {
     this.dataService.removeContact(id).subscribe(data => {
       this.contactUpdated = true;
-      this.dataService.contactUpdated.emit(this.contactUpdated);
+      this.dataService.contactUpdated.emit(this.contactUpdated);  // emit contactUpdated event
     });
   }
 

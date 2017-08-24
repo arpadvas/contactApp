@@ -1,24 +1,28 @@
+// main angular modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppRoutingModule } from './app-routing.module';
 
+// components
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactComponent } from './components/contact/contact.component';
-
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PanelComponent } from './components/panel/panel.component';
 import { ContactListElementComponent } from './components/contact-list-element/contact-list-element.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
-import { DataService } from './services/data.service';
 import { EditComponent } from './components/edit/edit.component';
-import { AddressComponent } from './components/address/address.component';
+
+//services
+import { DataService } from './services/data.service';
+
+// third part modules
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,7 @@ import { AddressComponent } from './components/address/address.component';
     PanelComponent,
     ContactListElementComponent,
     AddContactComponent,
-    EditComponent,
-    AddressComponent
+    EditComponent
   ],
   imports: [
     BrowserModule,

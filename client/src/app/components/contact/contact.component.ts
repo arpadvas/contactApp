@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private dataService: DataService
   ) {
+    // catch if contact was added
     this.dataService.contactUpdated.subscribe((contactUpdated: boolean) => {
       if (contactUpdated) {
         this.getContacts();

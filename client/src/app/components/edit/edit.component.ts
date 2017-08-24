@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
   disabled:boolean = false; // to disable tabs on editing
   tempAddress: Address; // temporary address container
   headingText: string = 'Address'; // static string for tab heading
+  activeTab: number; // active tab
 
   constructor(
     private dataService: DataService,
@@ -32,6 +33,18 @@ export class EditComponent implements OnInit {
       return `Address ${number+1}`;
     } else {
       return 'New Address';
+    }
+  }
+
+  // get active tab
+  getActiveTab(id) {
+    if (!this.activeTab) {
+      return true;
+    }
+    if (id) {
+      if (id == this.activeTab) {
+        return true;
+      }
     }
   }
 
@@ -61,6 +74,7 @@ export class EditComponent implements OnInit {
       this.dataService.editAddress(addressId, this.tempAddress).subscribe(data => {
         this.dataService.getAddresses(this.route.snapshot.params.id).subscribe(result => {
           this.addresses = result;
+          this.activeTab = addressId; // make the edited tab active
           this.addNewAddress();
         });
       });
@@ -68,6 +82,7 @@ export class EditComponent implements OnInit {
       this.dataService.addAddress(this.contact.id, this.tempAddress).subscribe(data => {
         this.dataService.getAddresses(this.route.snapshot.params.id).subscribe(result => {
           this.addresses = result;
+          this.activeTab = this.addresses[0].id; // make the first tab active
           this.addNewAddress();
         });
       });
@@ -106,6 +121,8 @@ export class EditComponent implements OnInit {
       this.addresses = data[1];
       if (data[1].length < 1) {
         this.editing = true;
+      } else {
+        this.activeTab = this.addresses[0].id;
       }
       this.processing = false;
       this.addNewAddress();

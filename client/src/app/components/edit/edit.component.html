@@ -3,12 +3,13 @@
     <div class="avatar">
       <img class="avatar__img" [src]="contact.avatar">
     </div>
-    <h3>{{contact.first_name}} {{contact.last_name}} addresses</h3>
+    <h3>{{contact.first_name}} {{contact.last_name}}'s addresses</h3>
   </div>
   <tabset>
     <tab *ngFor="let address of addresses" 
           [heading]="getHeading(address.id)" 
           [disabled]="disabled" 
+          [active]="getActiveTab(address.id)"
           (select)="selectNewAddress(address.id)" 
           (deselect)="deselectNewAddress(address.id)">
          <ul *ngIf="!editing" class="list-group">

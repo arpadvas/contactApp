@@ -80,7 +80,7 @@ export class DataService {
       });
   }
 
-  // get contact details and addresses
+  // get contact details, addresses and countries
   getUserDetails(id) {
     return Observable.forkJoin(
       this.http.get(`${this.domain}/contacts/${id}`)
@@ -89,6 +89,11 @@ export class DataService {
         return this.handleResponseError(res);
       }),
       this.http.get(`${this.domain}/contacts/${id}/addresses`)
+      .map(res => res.json())
+      .catch((res) => {
+        return this.handleResponseError(res);
+      }),
+      this.http.get(`${this.domain}/countries`)
       .map(res => res.json())
       .catch((res) => {
         return this.handleResponseError(res);

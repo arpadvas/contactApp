@@ -20,6 +20,7 @@ export class EditComponent implements OnInit {
   tempAddress: Address; // temporary address container
   headingText: string = 'Address'; // static string for tab heading
   activeTab: number; // active tab
+  countries: string[]; // array of choosable countries
 
   constructor(
     private dataService: DataService,
@@ -117,13 +118,21 @@ export class EditComponent implements OnInit {
   ngOnInit() {;
     this.processing = true;
     this.dataService.getUserDetails(this.route.snapshot.params.id).subscribe(data => {
-      this.contact = data[0];
-      this.addresses = data[1];
+      this.contact = data[0]; // populate contacts
+      this.addresses = data[1]; // populate addresses
+      // get new address form active if there is no address
       if (data[1].length < 1) {
         this.editing = true;
       } else {
         this.activeTab = this.addresses[0].id;
       }
+      // populate countries
+      const countries = data[2];
+      const countriesIsoCodes: string[] = [];
+      for (let i = 0; i < countries.length; i++) {
+        countriesIsoCodes.push(countries[i].iso2);
+      }
+      this.countries = countriesIsoCodes;
       this.processing = false;
       this.addNewAddress();
     });

@@ -37,7 +37,9 @@
             <input type="text" name="town" id="town" class="form-control" [(ngModel)]="tempAddress.town" placeholder="Town">
           </div>
           <div class="form-group">
-            <input type="text" name="country" id="country" class="form-control" [(ngModel)]="tempAddress.country" placeholder="Country">
+            <select class="form-control" id="country" name="country" [(ngModel)]="tempAddress.country">
+              <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+            </select>
           </div>      
           <button (click)="onSaveAddress(address.id)" class="btn btn-danger">Save address</button>
           <button (click)="onCancel(address.id)" class="btn btn-info">Cancel</button>

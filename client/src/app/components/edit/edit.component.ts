@@ -21,6 +21,7 @@ export class EditComponent implements OnInit {
   headingText: string = 'Address'; // static string for tab heading
   activeTab: number; // active tab
   countries: string[]; // array of choosable countries
+  isSelected: boolean = false; // to work around select bug found in ngx bootsrap tabs module
 
   constructor(
     private dataService: DataService,
@@ -94,7 +95,8 @@ export class EditComponent implements OnInit {
   onCancel(id) {
     if (id) {
       this.editing = false;
-    this.disabled = false;
+      this.disabled = false;
+      this.tempAddress = new Address('', '', '', '', this.contact.id);
     } else {
       this.tempAddress = new Address('', '', '', '', this.contact.id);
     }
@@ -104,7 +106,10 @@ export class EditComponent implements OnInit {
   selectNewAddress(id) {
     if (!id) {
       this.editing = true; 
-      this.tempAddress = new Address('', '', '', '', this.contact.id);
+      if (!this.isSelected) {
+        this.isSelected = true;
+        this.tempAddress = new Address('', '', '', '', this.contact.id);
+      }
     }
   }
 
@@ -123,6 +128,7 @@ export class EditComponent implements OnInit {
       // get new address form active if there is no address
       if (data[1].length < 1) {
         this.editing = true;
+        this.isSelected = true;
       } else {
         this.activeTab = this.addresses[0].id;
       }

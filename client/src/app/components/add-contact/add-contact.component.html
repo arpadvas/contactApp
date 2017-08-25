@@ -9,6 +9,6 @@
       <input type="text" name="lname" id="lname" formControlName="lname" class="form-control" placeholder="Last name...">
     </div>
   </div>
-  <button [disabled]="!form.valid" type="submit" class="btn btn-default">Add contact</button>
+  <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Add contact</button>
   <p class="help-block" *ngIf="(form.controls.fname.errors?.required && form.controls.fname.dirty) || (form.controls.lname.errors?.required && form.controls.lname.dirty)">Both fields are required.</p>
 </form>

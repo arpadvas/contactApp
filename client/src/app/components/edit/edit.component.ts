@@ -63,7 +63,7 @@ export class EditComponent implements OnInit {
 
   // create new tab with emty form to add new address
   addNewAddress() {
-    const newAddress = new Address('', '', '', '', this.contact.id);
+    const newAddress = new Address('', '', '', '-1', this.contact.id);
     this.tempAddress = newAddress;
     this.addresses.push(newAddress);
   }
@@ -96,9 +96,9 @@ export class EditComponent implements OnInit {
     if (id) {
       this.editing = false;
       this.disabled = false;
-      this.tempAddress = new Address('', '', '', '', this.contact.id);
+      this.tempAddress = new Address('', '', '', '-1', this.contact.id);
     } else {
-      this.tempAddress = new Address('', '', '', '', this.contact.id);
+      this.tempAddress = new Address('', '', '', '-1', this.contact.id);
     }
   }
 
@@ -108,7 +108,7 @@ export class EditComponent implements OnInit {
       this.editing = true; 
       if (!this.isSelected) {
         this.isSelected = true;
-        this.tempAddress = new Address('', '', '', '', this.contact.id);
+        this.tempAddress = new Address('', '', '', '-1', this.contact.id);
       }
     }
   }

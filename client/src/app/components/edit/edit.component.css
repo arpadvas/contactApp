@@ -1,23 +1,55 @@
+/*styling address list*/
+
 li {
     border-style: none;
 }
+
+ul, .form-container {
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0;
+}
+
+
+/*styling form element*/
+
+.form-container {
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+.form-control {
+    max-width: 400px;
+    border-style: none;
+    border-bottom: 1px solid #D9EDF7;
+    box-shadow: none;
+}
+
+input {
+    border-style: none;
+}
+
+input::placeholder {
+    filter: brightness(50%);
+    font-size: 14px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance : none;
+}
+
+
+/*styling header element*/
 
 h3 {
     display: inline-block;
     margin: 0;
     vertical-align: middle;
-}
-
-form {
-    margin-top: 10px;
-}
-
-.form-group {
-    margin-bottom: 8px;
-}
-
-.form-control {
-    max-width: 400px;
 }
 
 .address_header {

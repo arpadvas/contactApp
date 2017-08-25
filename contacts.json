@@ -23,30 +23,6 @@
       "first_name": "John",
       "last_name": "Doe",
       "id": 4
-    },
-    {
-      "first_name": "Test",
-      "last_name": "John",
-      "avatar": "https://handmade.network/static/light/empty-avatar.svg",
-      "id": 5
-    },
-    {
-      "first_name": "Test",
-      "last_name": "Jane",
-      "avatar": "https://handmade.network/static/light/empty-avatar.svg",
-      "id": 6
-    },
-    {
-      "first_name": "Tarr",
-      "last_name": "Bela",
-      "avatar": "https://handmade.network/static/light/empty-avatar.svg",
-      "id": 7
-    },
-    {
-      "first_name": "Arpad",
-      "last_name": "Vas",
-      "avatar": "https://handmade.network/static/light/empty-avatar.svg",
-      "id": 8
     }
   ],
   "addresses": [

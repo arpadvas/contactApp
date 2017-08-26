@@ -27,6 +27,7 @@ ul, .form-container {
     border-style: none;
     border-bottom: 1px solid #D9EDF7;
     box-shadow: none;
+    border-radius: 0;
 }
 
 input {
